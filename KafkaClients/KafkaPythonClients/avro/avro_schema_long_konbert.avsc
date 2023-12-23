@@ -1,0 +1,533 @@
+{
+  "type": "record",
+  "name": "longschema",
+  "fields": [
+      {
+          "name": "assets",
+          "type": {
+              "type": "array",
+              "items": {
+                  "type": "record",
+                  "namespace": "Record",
+                  "name": "assets",
+                  "fields": [
+                      {
+                          "name": "asset_tag",
+                          "type": "string"
+                      },
+                      {
+                          "name": "asset_name",
+                          "type": "string"
+                      },
+                      {
+                          "name": "recipe_number",
+                          "type": [
+                              "null",
+                              {
+                                  "type": "record",
+                                  "namespace": "Record.assets",
+                                  "name": "recipe_number",
+                                  "fields": [
+                                      {
+                                          "name": "server_index",
+                                          "type": "long"
+                                      },
+                                      {
+                                          "name": "value",
+                                          "type": "long"
+                                      }
+                                  ]
+                              }
+                          ]
+                      },
+                      {
+                          "name": "devices",
+                          "type": {
+                              "type": "array",
+                              "items": {
+                                  "type": "record",
+                                  "namespace": "Record.assets",
+                                  "name": "devices",
+                                  "fields": [
+                                      {
+                                          "name": "device_name",
+                                          "type": "string"
+                                      },
+                                      {
+                                          "name": "type",
+                                          "type": "string"
+                                      },
+                                      {
+                                          "name": "sensors",
+                                          "type": {
+                                              "type": "array",
+                                              "items": {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.devices",
+                                                  "name": "sensors",
+                                                  "fields": [
+                                                      {
+                                                          "name": "sensor_name",
+                                                          "type": "string"
+                                                      },
+                                                      {
+                                                          "name": "type",
+                                                          "type": "string"
+                                                      },
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "plc_tag",
+                                                          "type": "string"
+                                                      },
+                                                      {
+                                                          "name": "product_type",
+                                                          "type": "string"
+                                                      },
+                                                      {
+                                                          "name": "setpoints",
+                                                          "type": [
+                                                              "null",
+                                                              {
+                                                                  "type": "array",
+                                                                  "items": {
+                                                                      "type": "record",
+                                                                      "namespace": "Record.assets.devices.sensors",
+                                                                      "name": "setpoints",
+                                                                      "fields": [
+                                                                          {
+                                                                              "name": "setpoint_type",
+                                                                              "type": "string"
+                                                                          },
+                                                                          {
+                                                                              "name": "setpoint_index",
+                                                                              "type": "long"
+                                                                          },
+                                                                          {
+                                                                              "name": "setpoint_value",
+                                                                              "type": "long"
+                                                                          }
+                                                                      ]
+                                                                  }
+                                                              }
+                                                          ]
+                                                      },
+                                                      {
+                                                          "name": "modbus_type",
+                                                          "type": [
+                                                              "null",
+                                                              "string"
+                                                          ]
+                                                      },
+                                                      {
+                                                          "name": "unit_type",
+                                                          "type": [
+                                                              "null",
+                                                              "string"
+                                                          ]
+                                                      },
+                                                      {
+                                                          "name": "zone",
+                                                          "type": [
+                                                              "null",
+                                                              "long"
+                                                          ]
+                                                      }
+                                                  ]
+                                              }
+                                          }
+                                      },
+                                      {
+                                          "name": "feedbacks",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "array",
+                                                  "items": {
+                                                      "type": "record",
+                                                      "namespace": "Record.assets.devices",
+                                                      "name": "feedbacks",
+                                                      "fields": [
+                                                          {
+                                                              "name": "type",
+                                                              "type": "string"
+                                                          },
+                                                          {
+                                                              "name": "modbus_type",
+                                                              "type": "string"
+                                                          },
+                                                          {
+                                                              "name": "server_index",
+                                                              "type": "long"
+                                                          },
+                                                          {
+                                                              "name": "byte_index",
+                                                              "type": "long"
+                                                          },
+                                                          {
+                                                              "name": "bit_index",
+                                                              "type": "long"
+                                                          },
+                                                          {
+                                                              "name": "value",
+                                                              "type": "long"
+                                                          },
+                                                          {
+                                                              "name": "plc_tag",
+                                                              "type": "string"
+                                                          }
+                                                      ]
+                                                  }
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                          }
+                      },
+                      {
+                          "name": "infos",
+                          "type": [
+                              "null",
+                              {
+                                  "type": "record",
+                                  "namespace": "Record.assets",
+                                  "name": "infos",
+                                  "fields": [
+                                      {
+                                          "name": "MashStep",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "MashStep",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "MashTime",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "MashTime",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "MashDesiredTime",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "MashDesiredTime",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "MashSpeed",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "MashSpeed",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "BoilStep",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "BoilStep",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "BoilTime",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "BoilTime",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "BoilDesiredTime",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "BoilDesiredTime",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "LauterStart",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "LauterStart",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "LauterSpeed",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "LauterSpeed",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "LauterVerticalMotor",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "LauterVerticalMotor",
+                                                  "fields": [
+                                                      {
+                                                          "name": "modbus_type",
+                                                          "type": "string"
+                                                      },
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "byte_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "bit_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "plc_tag",
+                                                          "type": "string"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "LauterMixer",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "LauterMixer",
+                                                  "fields": [
+                                                      {
+                                                          "name": "modbus_type",
+                                                          "type": "string"
+                                                      },
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "byte_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "bit_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "plc_tag",
+                                                          "type": "string"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "CoolerOutput",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "CoolerOutput",
+                                                  "fields": [
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "name": "Alarm",
+                                          "type": [
+                                              "null",
+                                              {
+                                                  "type": "record",
+                                                  "namespace": "Record.assets.infos",
+                                                  "name": "Alarm",
+                                                  "fields": [
+                                                      {
+                                                          "name": "modbus_type",
+                                                          "type": "string"
+                                                      },
+                                                      {
+                                                          "name": "server_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "byte_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "bit_index",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "value",
+                                                          "type": "long"
+                                                      },
+                                                      {
+                                                          "name": "plc_tag",
+                                                          "type": "string"
+                                                      }
+                                                  ]
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                          ]
+                      }
+                  ]
+              }
+          }
+      }
+  ]
+}

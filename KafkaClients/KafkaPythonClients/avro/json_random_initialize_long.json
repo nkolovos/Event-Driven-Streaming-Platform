@@ -1,0 +1,1161 @@
+{
+  "assets": [
+  {
+  "asset_tag": "53e58cab-df5b-41bc-acbc-d9fa3aee8090",
+  "asset_name": "Masher Boiler",
+  "recipe_number": {
+  "server_index": 94,
+  "value": 1000
+  },
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "MBT",
+  "type": "01-  ",
+  "server_index": 0,
+  "value": 1000,
+  "plc_tag": "TT_123_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Mashing",
+  "setpoint_index": 102,
+  "setpoint_value": 1000
+  },
+  {
+  "setpoint_type": "Boiling",
+  "setpoint_index": 112,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ]
+  }
+  ],
+  "infos": {
+  "MashStep": {
+  "server_index": 96,
+  "value": 1000
+  },
+  "MashTime": {
+  "server_index": 98,
+  "value": 1000
+  },
+  "MashDesiredTime": {
+  "server_index": 100,
+  "value": 1000
+  },
+  "MashSpeed": {
+  "server_index": 104,
+  "value": 1000
+  },
+  "BoilStep": {
+  "server_index": 106,
+  "value": 1000
+  },
+  "BoilTime": {
+  "server_index": 108,
+  "value": 1000
+  },
+  "BoilDesiredTime": {
+  "server_index": 110,
+  "value": 1000
+  }
+  }
+  },
+  {
+  "asset_tag": "6cc4460a-03e8-4fd1-ad08-13e1021584f5",
+  "asset_name": "Lauter",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LRT",
+  "type": "01-Temperature",
+  "server_index": 2,
+  "value": 1000,
+  "plc_tag": "TT_133_01",
+  "product_type": "Beer"
+  }
+  ]
+  },
+  {
+  "device_name": "Device #2",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "CT",
+  "type": "12-Grant Level",
+  "server_index": 10,
+  "value": 1000,
+  "plc_tag": "LT_134_01",
+  "product_type": "Beer"
+  }
+  ]
+  }
+  ],
+  "infos": {
+  "LauterStart": {
+  "server_index": 114,
+  "value": 1000
+  },
+  "LauterSpeed": {
+  "server_index": 120,
+  "value": 1000
+  },
+  "LauterVerticalMotor": {
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 3,
+  "value": 1000,
+  "plc_tag": "M_133_02"
+  },
+  "LauterMixer": {
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 3,
+  "bit_index": 3,
+  "value": 1000,
+  "plc_tag": "M_133_01"
+  }
+  }
+  },
+  {
+  "asset_tag": "4221dfac-85da-40e6-953e-dc6c66fb997c",
+  "asset_name": "Cooler",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "WCT",
+  "type": "01-Temperature",
+  "server_index": 4,
+  "value": 1000,
+  "plc_tag": "TT_174_01",
+  "product_type": "Beer"
+  }
+  ]
+  }
+  ],
+  "infos": {
+  "CoolerOutput": {
+  "server_index": 116,
+  "value": 1000
+  }
+  }
+  },
+  {
+  "asset_tag": "95678248-44fe-47a1-bff1-9cf44f7f63df",
+  "asset_name": "Pump",
+  "devices": [
+  {
+  "device_name": "P104-01",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "PF",
+  "type": "29-Frequency Percentage",
+  "modbus_type": "32bit_uint",
+  "server_index": 220,
+  "value": 1000,
+  "plc_tag": "P104-01",
+  "product_type": "Beer"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "a0f3a0d7-0bb3-47e2-b7a9-cb3207a84e5c",
+  "asset_name": "Production Water",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "PW",
+  "type": "13-Flow",
+  "server_index": 12,
+  "value": 1000,
+  "plc_tag": "FT_841_01",
+  "product_type": "Water"
+  }
+  ]
+  },
+  {
+  "device_name": "Device #2",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "PW",
+  "type": "01-Temperature",
+  "server_index": 14,
+  "value": 1000,
+  "plc_tag": "TT_841_01",
+  "product_type": "Water"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "c5b8a7c3-5a21-4a6f-8913-d96df11d6410",
+  "asset_name": "Warm Water",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "WT",
+  "type": "01-Temperature",
+  "server_index": 6,
+  "value": 1000,
+  "plc_tag": "TT_833_01",
+  "product_type": "Water"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "221e614e-ed94-42c0-b493-216338227472",
+  "asset_name": "Glycol",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "CT",
+  "type": "01-Temperature",
+  "server_index": 8,
+  "value": 1000,
+  "plc_tag": "TT_913_01",
+  "product_type": "Coolant"
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 2,
+  "value": 1000,
+  "plc_tag": "P_914_01_FB"
+  }
+  ]
+  }
+  ],
+  "infos": {
+  "Alarm": {
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 3,
+  "value": 1000,
+  "plc_tag": "AL_915_01"
+  }
+  }
+  },
+  {
+  "asset_tag": "d00f5823-cdb2-4ef3-9dcf-b0b02b10686b",
+  "asset_name": "Cold Water",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "WP",
+  "type": "11-Volume",
+  "unit_type": "Hectolitre",
+  "server_index": 16,
+  "value": 1000,
+  "plc_tag": "PT-823-01",
+  "product_type": "Water"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "d629db9f-1f66-4231-b2ee-b94eb4009e6f",
+  "asset_name": "Fermenter 1",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 18,
+  "value": 1000,
+  "plc_tag": "TT_401_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 56,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 0,
+  "value": 1000,
+  "plc_tag": "SV_401_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 20,
+  "value": 1000,
+  "plc_tag": "TT_401_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 58,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 1,
+  "value": 1000,
+  "plc_tag": "SV_401_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "f15dd995-703f-482c-ae68-b85321b7b33f",
+  "asset_name": "Fermenter 2",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 22,
+  "value": 1000,
+  "plc_tag": "TT_402_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 60,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 2,
+  "value": 1000,
+  "plc_tag": "SV_402_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 24,
+  "value": 1000,
+  "plc_tag": "TT_402_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 62,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 3,
+  "value": 1000,
+  "plc_tag": "SV_402_01"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "25e1d123-20d7-4ff5-b6eb-01f6a4f6efb5",
+  "asset_name": "Fermenter 3",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 26,
+  "value": 1000,
+  "plc_tag": "TT_403_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 64,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 4,
+  "value": 1000,
+  "plc_tag": "SV_403_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 28,
+  "value": 1000,
+  "plc_tag": "TT_403_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 66,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 5,
+  "value": 1000,
+  "plc_tag": "SV_403_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "c640d87e-064e-4144-aa38-f315bb857a45",
+  "asset_name": "Fermenter 4",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 30,
+  "value": 1000,
+  "plc_tag": "TT_404_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 68,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 6,
+  "value": 1000,
+  "plc_tag": "SV_404_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 32,
+  "value": 1000,
+  "plc_tag": "TT_404_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 70,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 0,
+  "bit_index": 7,
+  "value": 1000,
+  "plc_tag": "SV_404_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "2b7692f8-48f4-4065-a37d-c6d617758fc9",
+  "asset_name": "Fermenter 5",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 34,
+  "value": 1000,
+  "plc_tag": "TT_405_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 72,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 0,
+  "value": 1000,
+  "plc_tag": "SV_405_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 36,
+  "value": 1000,
+  "plc_tag": "TT_405_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 74,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 1,
+  "value": 1000,
+  "plc_tag": "SV_405_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "b885cf9e-b6c6-468b-b74f-0686c77f5a50",
+  "asset_name": "Fermenter 6",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 40,
+  "value": 1000,
+  "plc_tag": "TT_406_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 78,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 2,
+  "value": 1000,
+  "plc_tag": "SV_406_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 42,
+  "value": 1000,
+  "plc_tag": "TT_406_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 80,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 3,
+  "value": 1000,
+  "plc_tag": "SV_406_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "ae1722ef-8458-4913-a09c-03ce6bbc422f",
+  "asset_name": "Fermenter 7",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 44,
+  "value": 1000,
+  "plc_tag": "TT_407_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 82,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 4,
+  "value": 1000,
+  "plc_tag": "SV_407_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 46,
+  "value": 1000,
+  "plc_tag": "TT_407_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 84,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 5,
+  "value": 1000,
+  "plc_tag": "SV_407_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "abec06d6-3e04-40fe-ad12-9e5eb15deca1",
+  "asset_name": "Fermenter 8",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 48,
+  "value": 1000,
+  "plc_tag": "TT_408_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 86,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 6,
+  "value": 1000,
+  "plc_tag": "SV_408_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 50,
+  "value": 1000,
+  "plc_tag": "TT_408_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 88,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 1,
+  "bit_index": 7,
+  "value": 1000,
+  "plc_tag": "SV_408_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "76d83447-3f10-4530-b2de-ba525baabc65",
+  "asset_name": "Fermenter 9",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 52,
+  "value": 1000,
+  "plc_tag": "TT_409_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 90,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 0,
+  "value": 1000,
+  "plc_tag": "SV_409_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 54,
+  "value": 1000,
+  "plc_tag": "TT_409_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 92,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 1,
+  "value": 1000,
+  "plc_tag": "SV_409_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "676e8700-afc8-4c84-a50d-dfae4e74193e",
+  "asset_name": "Fermenter 11",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 200,
+  "value": 1000,
+  "plc_tag": "TT_411_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 210,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 6,
+  "value": 1000,
+  "plc_tag": "SV_411_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 202,
+  "value": 1000,
+  "plc_tag": "TT_411_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 212,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 7,
+  "value": 1000,
+  "plc_tag": "SV_411_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "9b6a5f6a-e096-4765-af02-260d24743109",
+  "asset_name": "Fermenter 12",
+  "devices": [
+  {
+  "device_name": "Lower",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "LT",
+  "type": "01-Temperature",
+  "zone": 1,
+  "server_index": 204,
+  "value": 1000,
+  "plc_tag": "TT_412_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Lower",
+  "setpoint_index": 214,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 3,
+  "bit_index": 0,
+  "value": 1000,
+  "plc_tag": "SV_412_01"
+  }
+  ]
+  },
+  {
+  "device_name": "Upper",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "UT",
+  "type": "01-Temperature",
+  "zone": 2,
+  "server_index": 206,
+  "value": 1000,
+  "plc_tag": "TT_412_02",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "Fermentation Upper",
+  "setpoint_index": 216,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 3,
+  "bit_index": 1,
+  "value": 1000,
+  "plc_tag": "SV_412_02"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "8ebe1319-6901-4f39-aba4-7b56b55eb948",
+  "asset_name": "BBT",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "BBTT",
+  "type": "01-Temperature",
+  "server_index": 38,
+  "value": 1000,
+  "plc_tag": "TT_501_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "BBT",
+  "setpoint_index": 76,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 4,
+  "value": 1000,
+  "plc_tag": "SV_501_01"
+  }
+  ]
+  }
+  ]
+  },
+  {
+  "asset_tag": "e36c6e70-07b5-48ba-96b2-5a29173d4b16",
+  "asset_name": "BBT 02",
+  "devices": [
+  {
+  "device_name": "Device #1",
+  "type": "register",
+  "sensors": [
+  {
+  "sensor_name": "BBTT",
+  "type": "01-Temperature",
+  "server_index": 208,
+  "value": 1000,
+  "plc_tag": "TT_502_01",
+  "product_type": "Beer",
+  "setpoints": [
+  {
+  "setpoint_type": "BBTT",
+  "setpoint_index": 218,
+  "setpoint_value": 1000
+  }
+  ]
+  }
+  ],
+  "feedbacks": [
+  {
+  "type": "Valve",
+  "modbus_type": "32bit_uint",
+  "server_index": 118,
+  "byte_index": 2,
+  "bit_index": 5,
+  "value": 1000,
+  "plc_tag": "SV_502_01"
+  }
+  ]
+  }
+  ]
+  }
+  ]
+ }

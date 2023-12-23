@@ -1,0 +1,3 @@
+# Kafka required packages
+confluent-kafka
+fastavro
