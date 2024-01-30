@@ -1,27 +1,9 @@
 {
-    "assets": [
-      {
-        "asset_tag": "88075b8e-d217-4128-b24d-bb08a29ec46b",
-        "devices": [
-          {
-            "sensors": [
-              {
-                "type": "33-Speed",
-                "value": 0,
-                "setpoints": [
-                  {
-                    "setpoint_type": "SetSpeed",
-                    "setpoint_value": 666
-                  }
-                ]
-              }
-            ],
-            "device_tag": "dbab40fc-f1cf-5e05-b83e-399672a38527"
-          }
-        ]
-      }
-    ],
-    "mac_address": "E4:5F:01:B0:1E:9C",
-    "message_datetime": "2023-07-03 13:40:01",
-    "restored": 0
-  }
+  "deviceID": "sensor2",
+  "latitude": 39.36103,
+  "longitude": 22.94248,
+  "pm25": 12.5,
+  "temperature": 22.5,
+  "humidity": 60.0,
+  "timestamp": 164099520
+}

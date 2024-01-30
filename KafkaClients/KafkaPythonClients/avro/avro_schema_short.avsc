@@ -1,11 +1,13 @@
-
 {
-  "namespace": "example.avro",
-"type": "record",
-"name": "User",
-"fields": [
-    {"name": "name", "type": "string"},
-    {"name": "favorite_number",  "type": ["int", "null"]},
-    {"name": "favorite_color", "type": ["string", "null"]}
-]
+  "type": "record",
+  "name": "SensorData",
+  "fields": [
+    {"name": "deviceId", "type": "string"},
+    {"name": "latitude", "type": "float"},
+    {"name": "longitude", "type": "float"},
+    {"name": "pm25", "type": "float"},
+    {"name": "temperature", "type": "float"},
+    {"name": "humidity", "type": "float"},
+    {"name": "timestamp", "type": "long"}
+  ]
 }

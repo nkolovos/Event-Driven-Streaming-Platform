@@ -76,12 +76,13 @@ def main(args):
                 raise KafkaException(msg.error())
 
             # Deserialize the message using the Avro deserializer
-            user_data = avro_deserializer(msg.value(), 
-                                          SerializationContext(msg.topic(), MessageField.VALUE))
+            user_data = avro_deserializer(msg.value(), SerializationContext(msg.topic(), MessageField.VALUE))
             
             # Store the deserialized message in a JSON file 
             if user_data is not None:
+
                 output_file = os.path.join(output_dir, f"output_user_{msg.offset()}.json")
+
                 with open(output_file, "w") as json_file:
                     json.dump(user_data, json_file, indent=2)
         
