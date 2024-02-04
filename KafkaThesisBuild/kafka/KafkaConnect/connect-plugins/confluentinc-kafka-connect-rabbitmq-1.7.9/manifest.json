@@ -1,0 +1,33 @@
+{
+  "name" : "kafka-connect-rabbitmq",
+  "version" : "1.7.9",
+  "title" : "Kafka Connect RabbitMQ",
+  "description" : "Kafka Source Connector for RabbitMQ",
+  "owner" : {
+    "username" : "confluentinc",
+    "type" : "organization",
+    "name" : "Confluent, Inc.",
+    "url" : "https://www.confluent.io",
+    "logo" : "assets/confluent.png"
+  },
+  "support" : {
+    "summary" : "This connector is a Confluent Commercial Connector and <a href=\"https://www.confluent.io/subscription/\">supported by Confluent</a>. The <connector-name> requires purchase of a <a href=\"https://www.confluent.io/product/confluent-platform/\">Confluent Platform</a> subscription, including a license to this Commercial Connector. You can also use this connector for a 30-day trial without an enterprise license key - after 30 days, you need to purchase a subscription. Please contact your Confluent account manager for details.",
+    "logo" : "assets/confluent.png",
+    "provider_name" : "Confluent, Inc."
+  },
+  "tags" : [ "RabbitMQ", "Messaging" ],
+  "features" : {
+    "supported_encodings" : [ "any" ],
+    "single_message_transforms" : true,
+    "confluent_control_center_integration" : true,
+    "kafka_connect_api" : true
+  },
+  "documentation_url" : "https://docs.confluent.io/kafka-connect-rabbitmq-source/current/index.html",
+  "docker_image" : { },
+  "license" : [ {
+    "name" : "Confluent Software Evaluation License",
+    "url" : "https://www.confluent.io/software-evaluation-license"
+  } ],
+  "component_types" : [ "transform", "source" ],
+  "release_date" : "2023-07-12"
+}

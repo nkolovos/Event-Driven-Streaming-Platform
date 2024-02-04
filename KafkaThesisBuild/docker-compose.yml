@@ -1,0 +1,169 @@
+version: '3.5'
+services:
+
+  controller:
+    image: cp-kafka-broker
+    build:
+      context: kafka/KafkaBroker
+      dockerfile: Dockerfile-kafka-broker
+    hostname: controller
+    container_name: kafka-controller
+    networks:
+      - syntelesis-network
+    ports:
+      - "9090:9090"
+      # - "9102:9102"
+    volumes:
+     - source: controller-data
+       target: /var/lib/kafka/data
+       type: volume
+     - source: controller-data
+       target: /etc/kafka/secrets
+       type: volume
+    env_file:
+      - ./kafka/KafkaBroker/kafka-controller.env
+
+
+  broker1:
+    image: cp-kafka-broker
+    hostname: broker1
+    container_name: kafka-broker1
+    networks:
+      - syntelesis-network
+    depends_on:
+      - controller
+    ports:
+      - "9091:9091"
+      # - "9101:9101"
+    volumes:
+     - source: broker1-data
+       target: /var/lib/kafka/data
+       type: volume
+     - source: broker1-data
+       target: /etc/kafka/secrets
+       type: volume
+    env_file:
+      - ./kafka/KafkaBroker/kafka-broker1.env
+
+  broker2:
+    image: cp-kafka-broker
+    hostname: broker2
+    container_name: kafka-broker2
+    networks:
+      - syntelesis-network
+    depends_on:
+      - controller
+      - broker1
+    ports:
+      - "9092:9092"
+    volumes:
+     - source: broker2-data
+       target: /var/lib/kafka/data
+       type: volume
+     - source: broker2-data
+       target: /etc/kafka/secrets
+       type: volume
+    env_file:
+      - ./kafka/KafkaBroker/kafka-broker2.env
+
+  broker3:
+    image: cp-kafka-broker
+    hostname: broker3
+    container_name: kafka-broker3
+    networks:
+      - syntelesis-network
+    depends_on:
+      - controller
+      - broker1
+      - broker2
+    ports:
+      - "9093:9093"
+    volumes:
+     - source: broker3-data
+       target: /var/lib/kafka/data
+       type: volume
+     - source: broker3-data
+       target: /etc/kafka/secrets
+       type: volume
+    env_file:
+      - ./kafka/KafkaBroker/kafka-broker3.env
+
+  connect:
+    image: cp-kafka-connect
+    build:
+      context: kafka/KafkaConnect
+      dockerfile: Dockerfile-kafka-connect
+    hostname: connect
+    container_name: kafka-connect
+    networks:
+      - syntelesis-network
+    depends_on:
+      - controller
+      - broker1
+      - broker2
+      - broker3
+    ports:
+      - "8084:8083"
+
+  schema-registry:
+    image: cp-schema-registry
+    build:
+      context: kafka/KafkaSchemaRegistry
+      dockerfile: Dockerfile-kafka-schema-registry
+    hostname: schema-registry
+    container_name: kafka-schema-registry
+    networks:
+      - syntelesis-network
+    depends_on:
+      - controller
+      - broker1
+      - broker2
+      - broker3
+      - connect
+    ports:
+      - "8081:8081"
+    env_file:
+      - ./kafka/KafkaSchemaRegistry/kafka-schema-registry.env
+
+  akhq:
+    image: akhq-kafka-control-panel
+    build:
+      context: kafka/KafkaControlPanelAKHQ/
+      dockerfile: Dockerfile-akhq
+    container_name: kafka-control-panel
+    networks:
+     - syntelesis-network
+    depends_on:
+     - controller
+     - broker1
+     - broker2
+     - broker3
+     - connect
+     - schema-registry
+    ports:
+     - "8070:8080"
+    volumes:
+      - ./kafka/KafkaControlPanelAKHQ/akhq.yml:/app/application.yml
+      
+volumes:
+  data_postgres:
+    driver: local
+  data_rabbitmq:
+    driver: local
+  app_log:
+    driver: local
+  services_repo:
+    driver: local
+  controller-data:
+    driver: local
+  broker1-data:
+    driver: local
+  broker2-data:
+    driver: local
+  broker3-data:
+    driver: local
+
+networks:
+  syntelesis-network:
+    name: syntelesis-network
+    driver: bridge

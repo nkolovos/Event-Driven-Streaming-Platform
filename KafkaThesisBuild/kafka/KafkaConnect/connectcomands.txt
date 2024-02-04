@@ -1,0 +1,8 @@
+curl -s -o /dev/null -w %{http_code} http://localhost:8084/connectors
+
+curl -X POST -H "Content-Type: application/json" --data @connector.json http://localhost:8084/connectors
+
+   89  curl -X POST -H "Content-Type: application/json" --data @connect-workers-configuration-rabbit.json http://localhost:8084/connectors
+   90  curl -X DELETE http://localhost:8084/connectors/RabbitMQSourceConnector
+
+   
