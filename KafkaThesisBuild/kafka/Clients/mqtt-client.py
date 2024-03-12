@@ -2,16 +2,7 @@ import paho.mqtt.client as mqtt
 import json
 import time
 
-# Test data
-data = {
-            "deviceId": "mqtt_sensor",
-            "latitude": 39.38103,
-            "longitude": 22.99248,
-            "pm25": 40,
-            "humidity": 40,
-            "temperature": 40,
-            "timestamp": int(time.time())  # Current time in milliseconds
-        }
+
 
 # MQTT server details
 mqtt_host = 'localhost'
@@ -30,6 +21,16 @@ client.connect(mqtt_host)
 
 try:
     while True:
+        # Test data
+        data = {
+                "deviceId": "mqtt_sensor",
+                "latitude": 39.3810,
+                "longitude": 22.9924,
+                "pm25": 40,
+                "temperature": 40,
+                "humidity": 40,
+                "timestamp": int(time.time())  # Current time in milliseconds
+                }
         # Convert user data to JSON
         user_json = json.dumps(data)
 

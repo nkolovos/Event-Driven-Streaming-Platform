@@ -10,6 +10,10 @@ from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka.schema_registry.avro import AvroDeserializer
 from websockets import WebSocketServerProtocol, serve
 import websockets
+from queue import Queue
+from dotenv import load_dotenv
+import os
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -20,20 +24,25 @@ websocket_clients = set()
 simple_kafka_subscribed_topics = set()
 avro_kafka_subscribed_topics = set()
 
+# Load environment variables from .env file
+load_dotenv()
+bootstrap_servers = os.getenv("BOOTSTRAP_SERVERS")
+schema_registry_url = os.getenv("SCHEMA_REGISTRY_URL")
+
 
 ##################################################
 
 # Initialize Kafka consumer
-simple_consumer_conf = {'bootstrap.servers': "localhost:9092", 'group.id': "group", 'auto.offset.reset': "latest"}
+simple_consumer_conf = {'bootstrap.servers': bootstrap_servers, 'group.id': "group", 'auto.offset.reset': "latest"}
 simple_consumer = Consumer(simple_consumer_conf)
 
 
 ##################################################
 # Initialize Avro Kafka consumer for Avro messages
-schema_registry_conf = {'url': "http://localhost:8081"}
+schema_registry_conf = {'url': schema_registry_url}
 schema_registry_client = SchemaRegistryClient(schema_registry_conf)
 avro_deserializer = AvroDeserializer(schema_registry_client)
-avro_consumer_conf = {'bootstrap.servers': "localhost:9092", 'group.id': "group2", 'auto.offset.reset': "latest"}
+avro_consumer_conf = {'bootstrap.servers': bootstrap_servers, 'group.id': "group2", 'auto.offset.reset': "latest"}
 avro_consumer = Consumer(avro_consumer_conf)
 
 ####################################################
@@ -42,7 +51,7 @@ avro_consumer = Consumer(avro_consumer_conf)
 last_messages = {}
 
 # Initialize a thread-safe asyncio Queue for Kafka messages
-kafka_message_queue = asyncio.Queue()
+kafka_message_queue = Queue()
 
 
 def poll_kafka_messages():
@@ -52,7 +61,7 @@ def poll_kafka_messages():
         try:
             # Poll simple messages
             # logging.info("Polling Kafka for messages...")
-            simple_message = simple_consumer.poll(0.2)
+            simple_message = simple_consumer.poll(1)
 
             if simple_message is not None and not simple_message.error():
                 simple_message_value = simple_message.value().decode('utf-8')
@@ -60,12 +69,13 @@ def poll_kafka_messages():
                 kafka_message_queue.put_nowait(simple_message)
 
             # Poll Avro messages
-            avro_message = avro_consumer.poll(0.2)
+            avro_message = avro_consumer.poll(1)
 
             if avro_message is not None and not avro_message.error():
                 deserialized_value = avro_deserializer(avro_message.value(), SerializationContext(avro_message.topic(), MessageField.VALUE))
-                deserialized_value = json.dumps(deserialized_value)
-                avro_message.set_value(deserialized_value)
+                # deserialized_value = json.dumps(deserialized_value)
+                json_value = json.dumps(deserialized_value)
+                avro_message.set_value(json_value)
                 kafka_message_queue.put_nowait(avro_message)
 
             # time.sleep(1)                        
@@ -99,37 +109,44 @@ async def subscribe_to_new_kafka_topics():
             avro_consumer.subscribe(list(new_avro_topics))
             logging.info(f"Avro consumer subscribed to: {new_avro_topics}")
 
-        await asyncio.sleep(5)  # Check for new topics every second
-        print("$$$$$$$$$$$$$$$$$$$")
+        await asyncio.sleep(100)  # Check for new topics every second
 
 
 async def send_kafka_messages_to_websocket_clients():
     """Send Kafka messages to WebSocket clients."""
 
     while True:
-        # Get the next message from the Kafka queue
-        message = await kafka_message_queue.get()
-        # Extract the value from the message
-        message_value = message.value()
+        # Process all available messages in the queue
+        while not kafka_message_queue.empty():
+            # Get the next message from the Kafka queue
+            message = await loop.run_in_executor(None, kafka_message_queue.get_nowait)
 
-        # Extract the key from the message
-        device_id = message.key()
+            # Extract the value from the message
+            message_value = message.value()
+            # print(message_value)
 
-        # Store the last message for each device
-        last_messages[device_id] = message_value
+            # message_value = json.dumps(message.value())
 
-        logging.info(f"From device: {device_id}. Number of unique devices: {len(last_messages)}")
+            # Extract the key from the message
+            device_id = message.key()
 
-        # If there are any WebSocket clients, send the message to all of them
-        if websocket_clients:
-            for client in websocket_clients.copy():
-                try:
-                    await client.send(message_value)
+            # Store the last message for each device
+            last_messages[device_id] = message_value
 
-                except (websockets.exceptions.ConnectionClosedOK, websockets.exceptions.ConnectionClosedError):
-                    continue
+            logging.info(f"From device: {device_id}. Number of unique devices: {len(last_messages)}")
 
+            # If there are any WebSocket clients, send the message to all of them
+            if websocket_clients:
+                for client in websocket_clients.copy():
+                    try:
+                        await client.send(message_value)
 
+                    except (websockets.exceptions.ConnectionClosedOK, websockets.exceptions.ConnectionClosedError):
+                        continue
+
+        # Sleep for 5 seconds before processing the next batch of messages
+        await asyncio.sleep(5)
+        
 async def handle_websocket_connection(websocket: WebSocketServerProtocol, path):
     """Handle a new WebSocket connection."""
 
@@ -153,20 +170,23 @@ async def handle_websocket_connection(websocket: WebSocketServerProtocol, path):
 # Start polling Kafka messages in a separate thread
 threading.Thread(target=poll_kafka_messages, daemon=True).start()
 
-# Start a WebSocket server
-start_server = serve(handle_websocket_connection, 'localhost', 18080)
+# Create an asyncio event loop
+loop = asyncio.get_event_loop()
 
-# Run the WebSocket server, and the Kafka message and topic handlers
-asyncio.get_event_loop().run_until_complete(start_server)
+# Start a WebSocket server
+start_server = serve(handle_websocket_connection, '0.0.0.0', 18080)
 
 # Ensure that the function to send Kafka messages to WebSocket clients is running
-asyncio.ensure_future(send_kafka_messages_to_websocket_clients())
+send_kafka_messages_task = loop.create_task(send_kafka_messages_to_websocket_clients())
 
 # Ensure that the function to subscribe to new Kafka topics is running
-asyncio.ensure_future(subscribe_to_new_kafka_topics())
+subscribe_to_new_kafka_topics_task = loop.create_task(subscribe_to_new_kafka_topics())
+
+# Run the WebSocket server, and the Kafka message and topic handlers
+loop.run_until_complete(start_server)
 
 # Run the event loop forever
-asyncio.get_event_loop().run_forever()
+loop.run_forever()
 
 
 def shutdown(signal, loop):
@@ -174,9 +194,6 @@ def shutdown(signal, loop):
     
     logging.info("Received exit signal, shutting down...")
     logging.info("Closing Kafka consumers...")
-
-    # Log the shutdown request
-    print("Received exit signal, shutting down...")
 
     # Close the Kafka consumers
     simple_consumer.close()  # Close simple Kafka consumer
@@ -187,15 +204,22 @@ def shutdown(signal, loop):
     for client in websocket_clients:
         loop.run_until_complete(client.close())
 
+    # Cancel all running asyncio tasks
+    logging.info("Cancelling asyncio tasks...")
+    tasks = [t for t in asyncio.all_tasks() if t is not asyncio.current_task()]
+
+    [task.cancel() for task in tasks]
+
+    logging.info("Cancelling complete! Waiting for tasks to finish...")
+    loop.run_until_complete(asyncio.gather(*tasks, return_exceptions=True))
+    logging.info("Tasks finished cancelling.")
+
     # Stop the asyncio event loop
     loop.stop()
 
-# Create an asyncio event loop
-loop = asyncio.get_event_loop()
-
 # Add signal handlers for SIGINT and SIGTERM to perform a graceful shutdown
 for sig in ('SIGINT', 'SIGTERM'):
-    loop.add_signal_handler(getattr(signal, sig), shutdown, sig, loop)
+    loop.add_signal_handler(getattr(signal, sig), lambda: loop.create_task(shutdown(sig, loop)))
 
 # Run the event loop until a shutdown signal is received
 try:
@@ -203,7 +227,7 @@ try:
 
 except KeyboardInterrupt:
     print("KeyboardInterrupt received, shutting down...")
-    shutdown(None, loop)
+    loop.run_until_complete(shutdown(None, loop))
 
 except Exception as e:
     print(f"An error occurred: {e}")

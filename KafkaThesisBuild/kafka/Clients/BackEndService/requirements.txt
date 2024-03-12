@@ -1,0 +1,6 @@
+asyncio
+confluent-kafka
+websockets
+python-dotenv
+requests
+fastavro

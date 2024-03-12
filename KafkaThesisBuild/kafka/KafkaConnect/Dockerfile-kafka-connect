@@ -4,7 +4,7 @@ FROM confluentinc/cp-kafka-connect:7.5.1
 ENV CONNECT_PLUGIN_PATH="/usr/share/java,/usr/share/confluent-hub-components" \
     # Directories where Kafka Connect will look for plugins
     CONNECT_BOOTSTRAP_SERVERS="broker1:29092,broker2:29092,broker3:29092" \
-    # Kafka broker(s) that Kafka Connect should connect to
+    # Kafka brokers that Kafka Connect should connect to
     CONNECT_REST_PORT=8084 \
     # Port where Kafka Connect's REST API will listen
     CONNECT_GROUP_ID=kafka-connect \

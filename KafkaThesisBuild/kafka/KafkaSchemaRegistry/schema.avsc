@@ -1,0 +1,13 @@
+{
+    "type": "record",
+    "name": "SensorData",
+    "fields": [
+      {"name": "deviceId", "type": "string"},
+      {"name": "latitude", "type": "double"},
+      {"name": "longitude", "type": "double"},
+      {"name": "pm25", "type": "float"},
+      {"name": "temperature", "type": "float"},
+      {"name": "humidity", "type": "float"},
+      {"name": "timestamp", "type": "long"}
+    ]
+  }

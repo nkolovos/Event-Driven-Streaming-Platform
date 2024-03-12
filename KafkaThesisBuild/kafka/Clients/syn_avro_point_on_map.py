@@ -14,6 +14,7 @@ import argparse
 import os
 import traceback
 from itertools import cycle
+import logging
 import sys
 import json
 import time
@@ -26,6 +27,10 @@ from confluent_kafka.admin import AdminClient
 from confluent_kafka.serialization import StringSerializer, SerializationContext, MessageField
 from confluent_kafka.schema_registry import SchemaRegistryClient, SchemaRegistryError
 from confluent_kafka.schema_registry.avro import AvroSerializer
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def delivery_report(err, msg):
@@ -47,17 +52,16 @@ def delivery_report(err, msg):
     """
 
     if err is not None:
-        print("$Delivery failed for User record {}: {}".format(msg.key(), err))
+        logging.info("$Delivery failed for User record {}: {}".format(msg.key(), err))
         return
-    print('User record {} successfully produced to {} [{}] at offset {}'.format(
-        msg.key(), msg.topic(), msg.partition(), msg.offset()))
-
+    logging.info('User record %s successfully produced to %s [%s] at offset %s', 
+             msg.key(), msg.topic(), msg.partition(), msg.offset())
 
 if __name__ == '__main__':
-    
-    # Extract the 'topic' and 'specific' arguments from the command line input
-    broker = 'localhost:9092'
 
+    # Extract the 'topic' and 'specific' arguments from the command line input
+    # will be passed as envirnment variables in a production deployment
+    broker = 'localhost:9092'
     topic = 'avro-sensor'
 
     # Create a Schema Registry client with the provided configuration
@@ -65,27 +69,39 @@ if __name__ == '__main__':
     schema_registry_client = SchemaRegistryClient(schema_registry_conf)
 
     # Fetch the Avro schema from the Schema Registry
-    subject_name = 'avro-sensor1-value'
+    subject_name = 'avro-sensor1'
 
     try:
         schema = schema_registry_client.get_latest_version(subject_name).schema.schema_str
+        # schema_json = json.loads(schema)  # Convert the schema string to a dictionary
 
     except SchemaRegistryError as e:
         if 'not found' in str(e):
-            print(f"Schema '{subject_name}' not found.")
+            logging.error(f"Schema '{subject_name}' not found.")
+            exit(1)
             # Handle the error, e.g., create the schema, exit the program, etc.
         else:
             # Re-raise the exception if it's a different error
             raise
 
+    # Create a custom subject name strategy function
+    def custom_subject_name_strategy(topic, record_name):
+        return subject_name  # Use the subject_name variable directly
+
+    # Create a configuration dictionary for AvroSerializer
+    avro_serializer_conf = {
+        "auto.register.schemas": False,
+        "subject.name.strategy": custom_subject_name_strategy
+    }
+
     # Initialize AvroSerializer with the Schema Registry client and the Avro schema string
-    avro_serializer = AvroSerializer(schema_registry_client, schema)
+    avro_serializer = AvroSerializer(schema_registry_client, schema, conf=avro_serializer_conf)
 
     # Initialize a StringSerializer for key serialization using 'utf-8' encoding
     string_serializer = StringSerializer('utf_8')
 
     # Configure the producer with bootstrap servers and 'acks' set to 'all' for message acknowledgment
-    producer_conf = {'bootstrap.servers': "localhost:9092"}
+    producer_conf = ({'bootstrap.servers': broker})
     # ,                 'acks': "all"}
 
     # Initialize the producer with the above configuration
@@ -94,58 +110,38 @@ if __name__ == '__main__':
     # Check if the topic exists in the list of excisting topics in the Kafka cluster
     # in order to avoid creating a topic that does not exist using the Producer Class
     if topic not in producer.list_topics().topics:
-        print(f"Topic '{topic}' does not exist")
+        logging.info(f"Topic '{topic}' does not exist")
         exit(1)
 
     # Initialize the record counter 'i' to keep track of the number of records processed
     i = 0
 
-    print("Producing user records to topic {}. ^C to exit.".format(topic))
+    logging.info("Producing user records to topic %s. ^C to exit.", topic)
+
+
+
+############################################
+    # Test data
 
     # Key generation 
     # key=string_serializer(str(uuid4()))
     # key = string_serializer("sensor1")
-    counter = 0
 
     # List of (latitude, longitude) tuples
     coordinates = [
-(40.2938, 22.0916),
-(40.2938, 22.5936),
-(40.2938, 21.9482),
-(40.2938, 22.0241),
-(40.2938, 21.6161),
-(40.2938, 22.6127),
-(40.2938, 21.2708),
-(40.2938, 21.8368),
-(40.2938, 21.7493),
-(40.2938, 22.5838),
-(40.2938, 21.3103),
-(40.2938, 21.8197),
-(40.2938, 21.4662),
-(40.2938, 21.5698),
-(40.2938, 21.6408),
-(40.2938, 21.7492),
-(40.2938, 22.0832),
-(40.2938, 21.4771),
-(40.2938, 22.138),
-(40.2938, 22.0306),
-]
+    (39.6289, 21.3425)
+    ]   
 
-    # Create a cyclic iterator for the coordinates
-    coordinates_cycle = cycle(coordinates)
-
-    # Create a list of sensor names
-    sensor_names = [f"sensor{i}" for i in range(1, 21)]
-
-    # Create a cyclic iterator for the sensor names
-    sensor_names_cycle = cycle(sensor_names)
+    # Create lists of pm25, temperature, and humidity values
+    pm25 = 40
+    temperature = 20
+    humidity = 40
+    sensor_name = "sensor1"
+    lat, lon = coordinates[0]
+############################################
     
-
 try:
     while True:
-        # Get the next set of coordinates
-        lat, lon = next(coordinates_cycle)
-        sensor_name = next(sensor_names_cycle)
 
         # Key generation 
         key = sensor_name
@@ -155,9 +151,9 @@ try:
             "deviceId": sensor_name,
             "latitude": lat,
             "longitude": lon,
-            "pm25": 40.5,
-            "humidity": 40,
-            "temperature": 40,
+            "pm25": pm25,
+            "temperature": temperature,
+            "humidity": humidity,
             "timestamp": int(time.time())  # Current time in seconds
         }
 
@@ -166,19 +162,25 @@ try:
             # The 'key' is generated as a string representation of a UUID (unique identifier)
             # The 'value' is serialized using the 'avro_serializer' with the 'SerializationContext'
             # The 'delivery_report' function is used for reporting the status of message delivery
-            print(f"Producing record: {key}")
-
+            # logging.info(f"Simple consumer subscribed to: {key}")
+            
             producer.produce(topic,
                              key=key,
                              value=avro_serializer(data, SerializationContext(topic, MessageField.VALUE)),
                              on_delivery=delivery_report)
+            
+        except ValueError as e:
+            logging.error('Value error: %s...........Please check your inserted value structure!', e)
+            break
 
         except BufferError:
-            sys.stderr.write('%% Local producer queue is full (%d messages awaiting delivery): try again\n' %
-                             len(producer))
-            
+            logging.error('Local producer queue is full (%d messages awaiting delivery): try again', len(producer))            
+            time.sleep(1)  # Wait for a short delay before retrying
+            continue  # Retry the current iteration of the loop
+
         except KafkaException as e:
-            sys.stderr.write('%% Serialization error: %s\n' % e)
+            logging.error('Kafka error: %s', e)
+            break
 
         # Serve delivery callback queue.
         producer.poll(0)
@@ -188,7 +190,7 @@ try:
         producer.flush()
 
         # Wait for 5 seconds before sending the next message
-        time.sleep(1)
+        time.sleep(3)
         # counter += 1
 
 except KeyboardInterrupt:

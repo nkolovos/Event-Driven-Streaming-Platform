@@ -11,7 +11,7 @@ akhq:
   security:
     default-group: no-roles # default group for all the users even unlogged user
     basic-auth:
-      - username: admin  # Username
+      - username: nikos  # Username
         password: "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
         passwordHash: SHA256
         groups:

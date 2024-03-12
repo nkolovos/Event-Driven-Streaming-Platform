@@ -3,19 +3,15 @@
 	"config": {
 		"connector.class": "io.confluent.connect.rabbitmq.RabbitMQSourceConnector",
 		"tasks.max": "1",
-		
-		"rabbitmq.queue": "rabbit-queue",
+		"key.converter.schemas.enable": "false",
+		"value.converter.schemas.enable": "false",
+		"confluent.topic.bootstrap.servers": "broker2:29092",
 		"rabbitmq.host": "host.docker.internal",
 		"rabbitmq.username": "nikos",
-		"rabbitmq.password": "56312012"
-		,
+		"rabbitmq.password": "56312012",
 		"kafka.topic": "testingtopic",
-		"confluent.topic.bootstrap.servers": "broker2:29092",
-
+		"rabbitmq.queue": "rabbit-queue",
 		"key.converter": "org.apache.kafka.connect.storage.StringConverter",
-		"value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
-		
-		"key.converter.schemas.enable": "false",
-		"value.converter.schemas.enable": "false"
+		"value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter"
 	}
 }
