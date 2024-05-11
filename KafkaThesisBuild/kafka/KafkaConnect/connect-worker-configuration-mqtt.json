@@ -1,25 +1,26 @@
 {
-    "name": "MQTTSourceConnector",
+    "name": "MQTT-dddddddd",
     "config": {
         
         "connector.class": "io.confluent.connect.mqtt.MqttSourceConnector",
 
-        "tasks.max": "1",
+        "tasks.max": "2",
         "key.converter": "org.apache.kafka.connect.storage.StringConverter",
         "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter",
         
         "confluent.topic.bootstrap.servers": "broker2:29092",
 
-        "mqtt.server.uri": "tcp://host.docker.internal:1883",
+        "mqtt.server.uri": "tcp://host.docker.internal:1885",
 
-        "mqtt.username": "nikos",
-        "mqtt.password": "56312012",
+        "mqtt.username": "test",
+        "mqtt.password": "mytest32",
 
 
-        "kafka.topic": "simple-mqtt",
-        "mqtt.topics": "simple-mqtt",
+        "kafka.topic": "mqtt-topic",
+        "mqtt.topics": "mqtt-topic",
          
         "key.converter.schemas.enable": "false",
         "value.converter.schemas.enable": "false"
     }
 }
+

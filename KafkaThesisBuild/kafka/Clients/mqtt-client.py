@@ -6,9 +6,10 @@ import time
 
 # MQTT server details
 mqtt_host = 'localhost'
+mqtt_port = 1885
 mqtt_topic = 'simple-mqtt'
-mqtt_username = 'nikos'
-mqtt_password = '56312012'
+mqtt_username = 'test'
+mqtt_password = 'mytest32'
 
 # Create an MQTT client
 client = mqtt.Client()
@@ -17,7 +18,7 @@ client = mqtt.Client()
 client.username_pw_set(mqtt_username, mqtt_password)
 
 # Connect to the MQTT server
-client.connect(mqtt_host)
+client.connect(mqtt_host, mqtt_port)
 
 try:
     while True:

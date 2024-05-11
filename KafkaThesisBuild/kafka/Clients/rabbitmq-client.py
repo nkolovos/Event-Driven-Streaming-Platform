@@ -3,9 +3,9 @@ import json
 
 # RabbitMQ server details
 rabbitmq_host = 'localhost'  # or the IP address/hostname of your Docker host machine
-rabbitmq_queue = 'rabbit-queue'
-rabbitmq_username = 'nikos'  # make sure this matches your RabbitMQ server credentials
-rabbitmq_password = '56312012'  # make sure this matches your RabbitMQ server credentials
+rabbitmq_queue = 'simple-mqtt'
+rabbitmq_username = 'test'  # make sure this matches your RabbitMQ server credentials
+rabbitmq_password = 'mytest32'  # make sure this matches your RabbitMQ server credentials
 
 # Create a connection to the RabbitMQ server
 credentials = pika.PlainCredentials(rabbitmq_username, rabbitmq_password)

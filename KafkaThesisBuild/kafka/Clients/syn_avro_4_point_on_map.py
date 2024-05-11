@@ -19,8 +19,8 @@ import sys
 import json
 import time
 from uuid import uuid4
-from fastavro.validation import validate
-from fastavro._validate_common import ValidationError as FastavroValidationError
+# from fastavro.validation import validate
+# from fastavro._validate_common import ValidationError as FastavroValidationError
 
 from confluent_kafka import Producer, KafkaException
 from confluent_kafka.admin import AdminClient
