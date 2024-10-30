@@ -66,7 +66,10 @@ Consumers are clients that read events from Kafka.The only metadata retained on 
 Replication is an important part of keeping your data highly-available and fault tolerant. Every topic can be replicated, even across geo-regions or datacenters. This means that there are always multiple brokers that have a copy of the data just in case things go wrong, you want to do maintenance on the brokers, and more. A common production setting is a replication factor of 3, meaning there will always be three copies of your data. This replication is performed at topic partition level.
 
 <br/>
+<img src=https://docs.confluent.io/_images/streams-and-tables-p1_p4.png>
+<br/>
 ![Image](./markdown-assets/streams-and-tables-p1_p4.png)
+(used for bitbucket compatibility issues)
 
 <br/>
 <br/>
@@ -84,4 +87,7 @@ The Confluent Schema Registry based Avro serializer, by design, does not include
 
 
 <br/>
+<img src=https://docs.confluent.io/platform/current/_images/schema-registry-ecosystem.jpg>
+<br/>
 ![Image](./markdown-assets/schema-registry-ecosystem.jpg)
+(used for bitbucket compatibility issues)
