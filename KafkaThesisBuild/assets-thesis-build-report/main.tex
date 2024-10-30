@@ -1,0 +1,197 @@
+
+%%
+% Είδος: διπλωματική στα αγγλικά
+\documentclass{uthece-thesis} 
+
+
+% Πακέτα και ορισμοί που τυχόν χρειάζονται, ανάλογα με το κείμενο της διπλωματικής
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\usepackage[hyphens]{url}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{caption} 
+% \captionsetup[table]{skip=10pt}
+\usepackage{tikz}
+\usepackage{datetime}
+\usepackage{ifthen}
+\usepackage{hyperref} % Για ενεργά URLs
+
+% Πρόσθετοι ορισμοί, ανάλογα με το κείμενο της διπλωματικής
+% typeset source code
+\newcommand{\src}[1]{{\tt#1}}
+
+% typeset a backslash
+\newcommand{\bkslash}{\symbol{92}}
+
+% Κύρια γλώσσα της διπλωματικής
+% μην την τροποποιείτε
+\ifgrthesisoption 
+    \setlanguage{greek}
+\else
+    \setlanguage{american} 
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%   MY PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+% \usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mdframed}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+
+
+% \usepackage{tikz}
+
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+
+
+
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+  language=JavaScript,
+  basicstyle=\ttfamily\fontsize{9}{9}\selectfont,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!40!black},
+  stringstyle=\color{black},
+  frame=none, % Remove frame
+  numbers=none, % Remove line numbers
+  breaklines=true,
+  tabsize=2,
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% THESIS INFO / ΠΛΗΡΟΦΟΡΙΕΣ ΔΙΠΛΩΜΑΤΙΚΗΣ
+%%
+% Τίτλος Διπλωματικής Εργασίας στα ελληνικά
+	\title{Δημιουργία Μικροϋπηρεσιών σε Δομές Διαδικτύου των Πραγμάτων για Λύσεις Έξυπνης Πόλης\\[0.5em] {\small Μια εφαρμογή παρακολούθησης της ατμοσφαιρικής ποιότητας αξιοποιώντας Apache Kafka και μεθοδολογίες Cloud}}
+% Τίτλος Διπλωματικής Εργασίας στα αγγλικά
+	\titleEng{Microservices in Internet of Things Infrastructures for Smart City Solutions\\[0.5em] {\small An Event-Driven Air Quality Monitoring Application Utilizing Apache Kafka and Cloud Methodologies}}
+
+ 
+% Ονοματεπώνυμο φοιτητή στα ελληνικά
+	\edef\authorname{Κολοβός Νικόλαος Καλλίνικος}
+	\edef\secauthorname{} % κενό αν η εργασία έγινε από έναν φοιτητή
+% Ονοματεπώνυμο φοιτητή στα αγγλικά 
+	\edef\authornameEng{Nikolaos Kallinikos Kolovos}
+	\edef\secauthornameEng{} % κενό αν η εργασία έγινε από έναν φοιτητή
+% Ονοματεπώνυμο Επιβλέποντα Καθηγητή στα ελληνικά
+	\supervisor{Σταμούλης Γεώργιος}
+% Ονοματεπώνυμο Επιβλέποντα Καθηγητή στα αγγλικά
+	\supervisorEng{Georgios Stamoulis}
+% Φύλλο επιβλέποντα στα ελληνικά 
+% Μην το τροποποιείτε για διπλωματική στα αγγλικά
+	\edef\supervisorMaleFemale{Επιβλέπων/πουσα}
+% Στοιχεία επιτροπής στα αγγλικά
+    \edef\supervisortitle{Professor}
+    \edef\supervisoraffiliation{Department of Electrical and Computer Engineering, University of Thessaly}
+    \edef\memberonename{Charilaos Akasiadis}
+    \edef\memberonetitle{Post-Doctoral Researcher}
+    \edef\memberoneaffiation{Institute of Informatics and Telecommunications, NCSR 'Demokritos'}
+    \edef\membertwoname{Nestor Evmorfopoulos}
+    \edef\membertwotitle{Associate Professor}
+    \edef\membertwoaffiation{Department of Electrical and Computer Engineering, University of Thessaly}    
+% Ημερομηνία υποβολής διπλωματικής
+    \newdate{docdate}{04}{02}{2024}
+% Ημερομηνία έγκρισης διπλωματικής
+    \newdate{docapprovedate}{01}{02}{2024}
+% format ημερομηνίας - μην το τροποποιείτε
+    \newdateformat{mydate}{\THEDAY-\THEMONTH-\THEYEAR} \mydate
+% Τόπος και έτος διπλωματικής στα ελληνικά
+	\edef\thesisPlaceDate{Μάρτιος \getdateyear{docdate}}
+% Τόπος και έτος διπλωματικής στα αγγλικά
+	\edef\thesisPlaceDateEng{March \getdateyear{docdate}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OPTIONAL MATERIAL / ΠΡΟΑΙΡΕΤΙΚΕΣ ΕΝΟΤΗΤΕΣ
+%%
+% Κατάλογος Σχημάτων προαιρετικά
+	\listoffigures % σε σχόλια για μη εμφάνιση
+% Κατάλογος Πινάκων προαιρετικά
+	\listoftables % σε σχόλια για μη εμφάνιση
+% Συντομογραφίες - Αρκτικόλεξα - Ακρωνύμια προαιρετικά
+	\include{abbreviations} % σε σχόλια για μη εμφάνιση 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\mainmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CHAPTERS / ΚΕΦΑΛΑΙΑ 
+%%
+    \include{chapter1}
+    \include{chapter2}
+    \include{chapter3}
+    \include{chapter4}
+    \include{chapter5}
+    \include{chapter6}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\backmatter % μην ενεργοποιείτε την εντολή
+% Βιβλιογραφία - Αναφορές
+	\bibliography{references}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% APPENDICES (optional) / ΠΑΡΑΡΤΗΜΑΤΑ (ΠΡΟΑΙΡΕΤΙΚΑ)
+% %%
+
+% % Εάν υπάρχουν περισσότερα από ένα Παραρτήματα
+% % είναι ενεργή η ακόλουθη εντολή
+% % και ανενεργή για μεμονωμένο Παράρτημα
+%     \include{appendices}
+
+% % Μην τροποποιήσετε τις ακόλουθες εντολές
+% \ifgrthesisoption
+%     \renewcommand{\chaptername}{Παράρτημα}
+% \else
+%     \renewcommand{\chaptername}{Appendix}
+% \fi
+
+% % Πριν το κάθε Παράρτημα (για περισσότερα από ένα), 
+% % ρυθμίζεται η κατάλληλη αλφαβητική αρίθμηση
+%     \renewcommand{\thechapter}{A} 
+%   	\include{appA}	
+% % %	
+%     \renewcommand{\thechapter}{B}
+%     \include{appB}
+
+% % Εάν υπάρχει μόνο ένα Παράρτημα,
+% % μπαίνουν σε σχόλια οι παραπάνω γραμμές 
+% % και ρυθμίζεται αρίθμηση χωρίς γράμμα
+% %   \renewcommand{\thechapter}{} 
+% %   \renewcommand{\thesection}{\arabic{section}}
+% %
+% % Ακολουθεί αρχείο μεμονωμένου Παραρτήματος
+% % (διαφορετική δομή από appA/appΒ)
+% %   \include{single_app} 
+
+% %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
