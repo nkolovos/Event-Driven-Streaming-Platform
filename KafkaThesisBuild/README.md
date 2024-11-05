@@ -8,8 +8,8 @@ Starting from the top, three protocols for producers are supported: native Kafka
   
 Events are subsequently streamed into our Kafka cluster. Our cluster operates in KRaft mode and consists of four nodes. A single controller node maintains the health of our Kafka cluster and performs tasks related to load-balancing and data recovery, in the cases that runtime failures occur. The remaining three nodes are data brokers configured in prioritizing data reliability, availability and ordering. In order to monitor and manage our Kafka Cluster and its associated services, such as Kafka Connect and Schema Registry, we have integrated an advanced control panel. AKHQ provides us with a user friendly graphical interface, allowing us to maximize our operational capabilities in a modern and accessible manner.  
   
-<img src="./assets-thesis-build-report/figures/scheme.drawio.png" alt="System Architecture" style="max-width: 40%; height: auto;"/>
-
+<!-- <img src="./assets-thesis-build-report/figures/scheme.drawio.png" alt="System Architecture" style="max-width: 40%; height: auto;"/> -->
+![System Architecture](./assets-thesis-build-report/figures/scheme.drawio.png)  
 *Figure 1: System Architecture*
   
 Additionally, a web application has been developed to display measurements on a live map. An automated process parses through the Kafka topics and assigns consumers to them. Both simple and Avro consumers are orchestrated to work in sync to fetch live events from our cluster. Web-Sockets, over a TCP connection, is continuously active application, ready to transfer data from our server side to our web browser. For our front-end we utilize React and OpenStreetMap to present the measurements on a contemporary, visually appealing map-based web page. Each point on the map represents sensors that continuously update and refresh their values. This configuration guarantees real-time and precise data representation, while ensuring low latency, high throughput and optimal availability.  
@@ -87,8 +87,8 @@ Instead of opting for the deprecated Zookeeper control plane, we employ the rela
 ### Control Plane  
 Furthermore, we utilize a single controller node in our control plane without replicating it, as seen in Figure 3. This approach helps us avoid unnecessary complexity and overhead, without direct exposure to the risk of data loss. We need to note that this decision was made after careful consideration of our requirements and priorities. While replicating the controller node could theoretically increase fault tolerance, it would also introduce complexities and potential synchronization issues. Instead, our focus on fault tolerance is achieved through replicating only the data brokers. This way, even if our controller node goes down during runtime, our data within the brokers remains safe. By leveraging a single node control plane configuration we achieve a firm balance between simplicity and robustness in our Kafka implementation.  
   
-<img src="./assets-thesis-build-report/figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:40%; height: auto;"/>
-
+<!-- <img src="./assets-thesis-build-report/figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:40%; height: auto;"/> -->
+![Cluster Configuration](./assets-thesis-build-report/figures/cluster.drawio.png)  
 *Figure 3: Cluster Configuration*  
   
 ### Data Plane  
@@ -99,8 +99,8 @@ Moreover, in terms of scalability, a three broker configuration is beneficial as
 ### Control Panel  
 Last but not least, we have implemented a control panel using AKHQ, which provides a contemporary and accessible graphical interface for managing our Kafka Cluster and its associated services. In addition to the SYNAISTHISI platform interface, operators can utilize this control panel to create topics, seen in Figure 4. It also facilitates schema creation, modification, and evolution within our Schema Registry service. All Kafka Connect workers can be deployed and controlled from this panel, simplifying monitoring and management during application runtime. This eliminates the need for users to rely on CLI (Command-line interface) tools, offering a more modern management method. As both self-managed and fully-managed cloud service providers rely on graphical interface control panels for their operations, our approach aligns with this standard. AKHQ is based on an open-source project with numerous contributors, guaranteeing its ongoing support and maintenance.  
   
-<img src=".\assets-thesis-build-report\figures\Screenshot2024-01-25141106.png" alt="Cluster Configuration" style="max-width: 70%; height: auto;"/>
-
+<!-- <img src=".\assets-thesis-build-report\figures\Screenshot2024-01-25141106.png" alt="Cluster Configuration" style="max-width: 70%; height: auto;"/> -->
+![System Architecture](.\assets-thesis-build-report\figures\Screenshot2024-01-25141106.png)  
 *Figure 4: Control Panel Overview*  
   
 ## Web Application  
@@ -119,10 +119,10 @@ Our web page is divided into two primary sections, the map section and the data 
   
 The other section of our page features a set of dashboards, Figure 6, each designed to display the three key measurements from our sensors: particle matter concentration, humidity percentage and temperature. Each set of tables within the dashboards corresponds to a specific point on the map. As these points are dynamically updated on the map to reflect the real-time locations of our sensors, the relevant tables in the dashboards adjust accordingly. This ensures that the set of data displayed is always updated. Moreover, the system allows us to display measurements from various time frames. Users can view measurements from a single day, three days, or a week old, providing them a comprehensive view of understanding of fluctuations over these periods.  
   
-<img src="./assets-thesis-build-report/figures/Screenshot2024-02-22183525.png" alt="Live Map Overview" style="max-width: 70%; height: auto;"/>
- 
+<!-- <img src="./assets-thesis-build-report/figures/Screenshot2024-02-22183525.png" alt="Live Map Overview" style="max-width: 70%; height: auto;"/> -->
+![Live Map Overview](./assets-thesis-build-report/figures/Screenshot2024-02-22183525.png)  
 *Figure 5: Live Map Overview*  
   
-<img src="./assets-thesis-build-report/figures/Screenshot2024-02-22183833.png" alt="Historical Data Dashboard Overview" style="max-width: 70%; height: auto;"/>
-
+<!-- <img src="./assets-thesis-build-report/figures/Screenshot2024-02-22183833.png" alt="Historical Data Dashboard Overview" style="max-width: 70%; height: auto;"/> -->
+![Historical Data Dashboard Overview](./assets-thesis-build-report/figures/Screenshot2024-02-22183833.png)  
 *Figure 6: Historical Data Dashboard Overview*  
