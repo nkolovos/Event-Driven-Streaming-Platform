@@ -5,7 +5,7 @@
 - **[KafkaDocker](https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaDocker)** : This folder contains the docker-compose file for setting up our application in various configurations and approches.
 - **[KafkaThesisBuild](https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaThesisBuild)** : This folder contains the final build of our Thesis streaming application, excluding the React frontend Live-map, which is located in the [LiveMapReact](https://github.com/nkolovos/LiveMapReact)  repo. Here you will find detailed inforamtion on the **[architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)** and the implementation of the application, in addtion with useful information on event-driven applications.
 
-[Next Page: Architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)
+**[Next Page: Architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)**
 
 ## **Future Goals**
 
@@ -21,4 +21,4 @@ to distribute the events across the partitions equally and efficiently.
 
 Each new feature will be developed in a **separate folder** in the repository, and the main Thesis application will remain untouched. This way, we can easily track the changes and the evolution of the application based on the new features.
 
-[Next Page: Architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)
+**[Next Page: Architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)**
