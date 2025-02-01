@@ -1,4 +1,8 @@
+**[Repository main page.](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
+
 ## **What does this repository contain?**
+
+![Kafka Logo](https://kafka.apache.org/images/kafka_diagram.png)
 
 ### This repository contains the following folders:
 - **[KafkaClients](https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaClients)** : This folder contains the code for Kafka clients, both custom and confluent SDK clients. They are useful for making various operations on our Kafka cluster from the client side.
@@ -6,6 +10,8 @@
 - **[KafkaThesisBuild](https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaThesisBuild)** : This folder contains the final build of our Thesis streaming application, excluding the React frontend Live-map, which is located in the [LiveMapReact](https://github.com/nkolovos/LiveMapReact)  repo. Here you will find detailed inforamtion on the **[architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)** and the implementation of the application, in addtion with useful information on event-driven applications.
 
 **[Next Page: Architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)**
+
+**[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
 
 ## **Future Goals**
 
@@ -22,3 +28,5 @@ to distribute the events across the partitions equally and efficiently.
 Each new feature will be developed in a **separate folder** in the repository, and the main Thesis application will remain untouched. This way, we can easily track the changes and the evolution of the application based on the new features.
 
 **[Next Page: Architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)**
+
+**[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
