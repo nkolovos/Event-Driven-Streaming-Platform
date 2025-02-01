@@ -8,8 +8,9 @@ Starting from the top, three protocols for producers are supported: native Kafka
   
 Events are subsequently streamed into our Kafka cluster. Our cluster operates in KRaft mode and consists of four nodes. A single controller node maintains the health of our Kafka cluster and performs tasks related to load-balancing and data recovery, in the cases that runtime failures occur. The remaining three nodes are data brokers configured in prioritizing data reliability, availability and ordering. In order to monitor and manage our Kafka Cluster and its associated services, such as Kafka Connect and Schema Registry, we have integrated an advanced control panel. AKHQ provides us with a user friendly graphical interface, allowing us to maximize our operational capabilities in a modern and accessible manner.  
   
-<!-- <img src="./assets-thesis-build-report/figures/scheme.drawio.png" alt="System Architecture" style="max-width: 40%; height: auto;"/> -->
-![System Architecture](./figures/scheme.drawio.png)  
+<img src="./figures/scheme.drawio.png" alt="System Architecture" style="max-width: 70%; height: auto;"/>
+<!-- ![System Architecture](./figures/scheme.drawio.png)   -->
+
 *Figure 1: System Architecture*
   
 Additionally, a web application has been developed to display measurements on a live map. An automated process parses through the Kafka topics and assigns consumers to them. Both simple and Avro consumers are orchestrated to work in sync to fetch live events from our cluster. Web-Sockets, over a TCP connection, is continuously active application, ready to transfer data from our server side to our web browser. For our front-end we utilize React and OpenStreetMap to present the measurements on a contemporary, visually appealing map-based web page. Each point on the map represents sensors that continuously update and refresh their values. This configuration guarantees real-time and precise data representation, while ensuring low latency, high throughput and optimal availability.  
@@ -87,8 +88,9 @@ Instead of opting for the deprecated Zookeeper control plane, we employ the rela
 ### Control Plane  
 Furthermore, we utilize a single controller node in our control plane without replicating it, as seen in Figure 3. This approach helps us avoid unnecessary complexity and overhead, without direct exposure to the risk of data loss. We need to note that this decision was made after careful consideration of our requirements and priorities. While replicating the controller node could theoretically increase fault tolerance, it would also introduce complexities and potential synchronization issues. Instead, our focus on fault tolerance is achieved through replicating only the data brokers. This way, even if our controller node goes down during runtime, our data within the brokers remains safe. By leveraging a single node control plane configuration we achieve a firm balance between simplicity and robustness in our Kafka implementation.  
   
-<!-- <img src="./assets-thesis-build-report/figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:40%; height: auto;"/> -->
-![Cluster Configuration](./figures/cluster.drawio.png)  
+<!-- ![Cluster Configuration](./figures/cluster.drawio.png)   -->
+<img src="./figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:70%; height: auto;"/>
+
 *Figure 3: Cluster Configuration*  
   
 ### Data Plane  
