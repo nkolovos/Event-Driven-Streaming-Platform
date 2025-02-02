@@ -1,4 +1,4 @@
-**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)**
+**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
 <br>
 **[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
 
@@ -140,6 +140,6 @@ The other section of our page features a set of dashboards, Figure 6, each desig
 ![Historical Data Dashboard Overview](./figures/Screenshot2024-02-22183833.png)  
 *Figure 6: Historical Data Dashboard Overview*  
 
-**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)**
+**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
 <br>
 **[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
