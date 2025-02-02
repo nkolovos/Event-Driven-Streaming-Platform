@@ -1,3 +1,7 @@
+**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
+<br>
+**[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
+
 # Architecture and Implementation  
 In this chapter, we are going to analyze and present the technical details of our project. We explore the critical aspects of our project, focusing on the implementation and execution of our designed solution. In addition, we provide details on the system's architecture, the chosen configurations and a further explanation of the key fundamentals that were prioritized for our implementation. Furthermore, we outline the main challenges encountered during the implementation phase and how we addressed them.  
   
@@ -8,10 +12,15 @@ Starting from the top, three protocols for producers are supported: native Kafka
   
 Events are subsequently streamed into our Kafka cluster. Our cluster operates in KRaft mode and consists of four nodes. A single controller node maintains the health of our Kafka cluster and performs tasks related to load-balancing and data recovery, in the cases that runtime failures occur. The remaining three nodes are data brokers configured in prioritizing data reliability, availability and ordering. In order to monitor and manage our Kafka Cluster and its associated services, such as Kafka Connect and Schema Registry, we have integrated an advanced control panel. AKHQ provides us with a user friendly graphical interface, allowing us to maximize our operational capabilities in a modern and accessible manner.  
   
-<!-- <img src="./assets-thesis-build-report/figures/scheme.drawio.png" alt="System Architecture" style="max-width: 40%; height: auto;"/> -->
-![System Architecture](./figures/scheme.drawio.png)  
-*Figure 1: System Architecture*
-  
+<div style="text-align: center;">
+  <img src="./figures/scheme.drawio.png" alt="System Architecture" style="max-width: 70%; height: auto;"/>
+  <br>
+  <strong>Figure 1: System Architecture</strong>
+</div>
+<!-- ![System Architecture](./figures/scheme.drawio.png)   -->
+
+<br>
+
 Additionally, a web application has been developed to display measurements on a live map. An automated process parses through the Kafka topics and assigns consumers to them. Both simple and Avro consumers are orchestrated to work in sync to fetch live events from our cluster. Web-Sockets, over a TCP connection, is continuously active application, ready to transfer data from our server side to our web browser. For our front-end we utilize React and OpenStreetMap to present the measurements on a contemporary, visually appealing map-based web page. Each point on the map represents sensors that continuously update and refresh their values. This configuration guarantees real-time and precise data representation, while ensuring low latency, high throughput and optimal availability.  
   
 ## Data Ingestion  
@@ -87,10 +96,14 @@ Instead of opting for the deprecated Zookeeper control plane, we employ the rela
 ### Control Plane  
 Furthermore, we utilize a single controller node in our control plane without replicating it, as seen in Figure 3. This approach helps us avoid unnecessary complexity and overhead, without direct exposure to the risk of data loss. We need to note that this decision was made after careful consideration of our requirements and priorities. While replicating the controller node could theoretically increase fault tolerance, it would also introduce complexities and potential synchronization issues. Instead, our focus on fault tolerance is achieved through replicating only the data brokers. This way, even if our controller node goes down during runtime, our data within the brokers remains safe. By leveraging a single node control plane configuration we achieve a firm balance between simplicity and robustness in our Kafka implementation.  
   
-<!-- <img src="./assets-thesis-build-report/figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:40%; height: auto;"/> -->
-![Cluster Configuration](./figures/cluster.drawio.png)  
-*Figure 3: Cluster Configuration*  
-  
+<!-- ![Cluster Configuration](./figures/cluster.drawio.png)   -->
+<div style="text-align: center;">
+  <img src="./figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:70%; height: auto;"/>
+  <br>
+  <strong>Figure 3: Cluster Configuration</strong>
+</div>
+
+
 ### Data Plane  
 Our three broker data plane endows our system with enhanced reliability, fault tolerance, and scalability. Firstly, this configuration offers superior fault tolerance compared to single and two-broker clusters. In the event that one of our brokers fails, Kafka will redistribute the load across the remaining two brokers. Since we are utilizing KRaft, the time needed for our Kafka Cluster to re-balance the replicated data is significantly minimized. The residual two nodes are able to maintain the data flow, ensuring minimal downtime during our cluster and application operation. This approach guarantees high availability for our platform, preventing disruption to our data streaming process in case of a broker failure.  
   
@@ -126,3 +139,7 @@ The other section of our page features a set of dashboards, Figure 6, each desig
 <!-- <img src="./assets-thesis-build-report/figures/Screenshot2024-02-22183833.png" alt="Historical Data Dashboard Overview" style="max-width: 70%; height: auto;"/> -->
 ![Historical Data Dashboard Overview](./figures/Screenshot2024-02-22183833.png)  
 *Figure 6: Historical Data Dashboard Overview*  
+
+**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
+<br>
+**[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
