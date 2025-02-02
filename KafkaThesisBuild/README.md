@@ -1,4 +1,4 @@
-**[Next Page](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf)**
+**<a href="https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf" target="_blank">Next Page</a>**
 <br>
 **[Prev Page](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
 
@@ -144,6 +144,6 @@ The other section of our page features a set of dashboards, Figure 6, each desig
 ![Historical Data Dashboard Overview](./figures/Screenshot2024-02-22183833.png)  
 **Figure 6: Historical Data Dashboard Overview**
 
-**[Next Page](https://github.com/nkolovos/Event-Driven-Streaming-Platform/blob/md-changes/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf)**
+**<a href="https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf" target="_blank">Next Page</a>**
 <br>
 **[Prev Page](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
