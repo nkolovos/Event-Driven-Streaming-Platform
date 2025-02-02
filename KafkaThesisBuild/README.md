@@ -15,11 +15,12 @@ Events are subsequently streamed into our Kafka cluster. Our cluster operates in
 <div style="text-align: center;">
   <img src="./figures/scheme.drawio.png" alt="System Architecture" style="max-width: 70%; height: auto;"/>
   <br>
-  *Figure 1: System Architecture*
+  <strong>Figure 1: System Architecture</strong>
 </div>
 <!-- ![System Architecture](./figures/scheme.drawio.png)   -->
 
-  
+<br>
+
 Additionally, a web application has been developed to display measurements on a live map. An automated process parses through the Kafka topics and assigns consumers to them. Both simple and Avro consumers are orchestrated to work in sync to fetch live events from our cluster. Web-Sockets, over a TCP connection, is continuously active application, ready to transfer data from our server side to our web browser. For our front-end we utilize React and OpenStreetMap to present the measurements on a contemporary, visually appealing map-based web page. Each point on the map represents sensors that continuously update and refresh their values. This configuration guarantees real-time and precise data representation, while ensuring low latency, high throughput and optimal availability.  
   
 ## Data Ingestion  
@@ -99,8 +100,9 @@ Furthermore, we utilize a single controller node in our control plane without re
 <div style="text-align: center;">
   <img src="./figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:70%; height: auto;"/>
   <br>
-  *Figure 3: Cluster Configuration*
+  <strong>Figure 3: Cluster Configuration</strong>
 </div>
+
 
 ### Data Plane  
 Our three broker data plane endows our system with enhanced reliability, fault tolerance, and scalability. Firstly, this configuration offers superior fault tolerance compared to single and two-broker clusters. In the event that one of our brokers fails, Kafka will redistribute the load across the remaining two brokers. Since we are utilizing KRaft, the time needed for our Kafka Cluster to re-balance the replicated data is significantly minimized. The residual two nodes are able to maintain the data flow, ensuring minimal downtime during our cluster and application operation. This approach guarantees high availability for our platform, preventing disruption to our data streaming process in case of a broker failure.  
