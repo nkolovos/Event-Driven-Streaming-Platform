@@ -1,4 +1,4 @@
-**[Next Page](https://github.com/nkolovos/Event-Driven-Streaming-Platform/blob/md-changes/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf)**
+**[Next Page](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf)**
 <br>
 **[Prev Page](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
 
