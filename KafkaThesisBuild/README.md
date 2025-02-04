@@ -83,7 +83,7 @@ In our implementation, our Kafka producers utilize Avro. This gives us comprehen
   
 </div>  
   
-*Figure 2: Presentation of our JSON file (on the left) and our Avro Schema (AVSC, on the right).*  
+**Figure 2: Presentation of our JSON file (on the left) and our Avro Schema (AVSC, on the right).**
 
 
 ## Data Structure  
