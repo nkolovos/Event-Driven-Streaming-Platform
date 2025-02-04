@@ -21,6 +21,7 @@ Events are subsequently streamed into our Kafka cluster. Our cluster operates in
   <br>
   <div style="text-align: left; display: inline-block; width: 70%;">
     <strong>Figure 1: System Architecture</strong>
+  </div>
 </div>
 <!-- ![System Architecture](./figures/scheme.drawio.png)   -->
 
@@ -107,6 +108,7 @@ Furthermore, we utilize a single controller node in our control plane without re
   <br>
   <div style="text-align: left; display: inline-block; width: 70%;">
     <strong>Figure 3: Cluster Configuration</strong>
+  </div>
 </div>
 
 
