@@ -1,6 +1,10 @@
-**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
+**<a href="https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf" target="_blank">Next Page</a>**
 <br>
-**[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
+**[Prev Page](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
+
+**[Repository Web view](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
+<br>
+**<a href="https://github.com/nkolovos/Event-Driven-Streaming-Platform" target="_blank">Repository Git view</a>**
 
 # Architecture and Implementation  
 In this chapter, we are going to analyze and present the technical details of our project. We explore the critical aspects of our project, focusing on the implementation and execution of our designed solution. In addition, we provide details on the system's architecture, the chosen configurations and a further explanation of the key fundamentals that were prioritized for our implementation. Furthermore, we outline the main challenges encountered during the implementation phase and how we addressed them.  
@@ -15,7 +19,9 @@ Events are subsequently streamed into our Kafka cluster. Our cluster operates in
 <div style="text-align: center;">
   <img src="./figures/scheme.drawio.png" alt="System Architecture" style="max-width: 70%; height: auto;"/>
   <br>
-  <strong>Figure 1: System Architecture</strong>
+  <div style="text-align: left; display: inline-block; width: 70%;">
+    <strong>Figure 1: System Architecture</strong>
+  </div>
 </div>
 <!-- ![System Architecture](./figures/scheme.drawio.png)   -->
 
@@ -77,7 +83,7 @@ In our implementation, our Kafka producers utilize Avro. This gives us comprehen
   
 </div>  
   
-*Figure 2: Presentation of our JSON file (on the left) and our Avro Schema (AVSC, on the right).*  
+**Figure 2: Presentation of our JSON file (on the left) and our Avro Schema (AVSC, on the right).**
 
 
 ## Data Structure  
@@ -100,7 +106,9 @@ Furthermore, we utilize a single controller node in our control plane without re
 <div style="text-align: center;">
   <img src="./figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:70%; height: auto;"/>
   <br>
-  <strong>Figure 3: Cluster Configuration</strong>
+  <div style="text-align: left; display: inline-block; width: 70%;">
+    <strong>Figure 3: Cluster Configuration</strong>
+  </div>
 </div>
 
 
@@ -114,7 +122,7 @@ Last but not least, we have implemented a control panel using AKHQ, which provid
   
 <!-- <img src=".\assets-thesis-build-report\figures\Screenshot2024-01-25141106.png" alt="Cluster Configuration" style="max-width: 70%; height: auto;"/> -->
 ![System Architecture](./figures/Screenshot2024-01-25141106.png)  
-*Figure 4: Control Panel Overview*  
+**Figure 4: Control Panel Overview**
   
 ## Web Application  
 In this section, we analyze the creation of a server-less side, back-end service and front-end page. These components fetch data from our cluster and display them on a live map. This implementation is specifically designed for our air quality application and is not a general-purpose platform like the Data Ingestion and server-side parts. On this regard, we have implemented a service that consumes live data from our Kafka Cluster and automatically detects the addition of new devices in our cluster. The consumed events are then sent over Web-Sockets to our front-end map, which is hosted as part of our modern-looking React live page.  
@@ -134,12 +142,12 @@ The other section of our page features a set of dashboards, Figure 6, each desig
   
 <!-- <img src="./assets-thesis-build-report/figures/Screenshot2024-02-22183525.png" alt="Live Map Overview" style="max-width: 70%; height: auto;"/> -->
 ![Live Map Overview](./figures/Screenshot2024-02-22183525.png)  
-*Figure 5: Live Map Overview*  
+**Figure 5: Live Map Overview**
   
 <!-- <img src="./assets-thesis-build-report/figures/Screenshot2024-02-22183833.png" alt="Historical Data Dashboard Overview" style="max-width: 70%; height: auto;"/> -->
 ![Historical Data Dashboard Overview](./figures/Screenshot2024-02-22183833.png)  
-*Figure 6: Historical Data Dashboard Overview*  
+**Figure 6: Historical Data Dashboard Overview**
 
-**[Prev Page: What does this repository contain?](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
+**<a href="https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/Nikoloas_Kolovos_presentation.pdf" target="_blank">Next Page</a>**
 <br>
-**[Repository main page](https://github.com/nkolovos/Event-Driven-Streaming-Platform)**
+**[Prev Page](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
