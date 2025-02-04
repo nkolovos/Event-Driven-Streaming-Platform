@@ -19,7 +19,8 @@ Events are subsequently streamed into our Kafka cluster. Our cluster operates in
 <div style="text-align: left;">
   <img src="./figures/scheme.drawio.png" alt="System Architecture" style="max-width: 70%; height: auto;"/>
   <br>
-  <strong>Figure 1: System Architecture</strong>
+  <div style="text-align: left; display: inline-block; width: 70%;">
+    <strong>Figure 1: System Architecture</strong>
 </div>
 <!-- ![System Architecture](./figures/scheme.drawio.png)   -->
 
@@ -104,7 +105,8 @@ Furthermore, we utilize a single controller node in our control plane without re
 <div style="text-align: left;">
   <img src="./figures/cluster.drawio.png" alt="Cluster Configuration" style="max-width:70%; height: auto;"/>
   <br>
-  <strong>Figure 3: Cluster Configuration</strong>
+  <div style="text-align: left; display: inline-block; width: 70%;">
+    <strong>Figure 3: Cluster Configuration</strong>
 </div>
 
 
