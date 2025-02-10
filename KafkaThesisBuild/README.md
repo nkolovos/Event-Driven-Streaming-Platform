@@ -5,7 +5,7 @@
 **[Repository Web view](https://nkolovos.github.io/Event-Driven-Streaming-Platform/)**
 <br>
 **<a href="https://github.com/nkolovos/Event-Driven-Streaming-Platform" target="_blank">Repository Git view</a>**
-
+testing
 # Architecture and Implementation  
 In this chapter, we are going to analyze and present the technical details of our project. We explore the critical aspects of our project, focusing on the implementation and execution of our designed solution. In addition, we provide details on the system's architecture, the chosen configurations and a further explanation of the key fundamentals that were prioritized for our implementation. Furthermore, we outline the main challenges encountered during the implementation phase and how we addressed them.  
   
