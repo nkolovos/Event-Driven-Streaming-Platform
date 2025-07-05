@@ -12,9 +12,9 @@
 ### This repository contains the following folders:
 - **<a href="https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaClients" target="_blank">KafkaClients</a>** : This folder contains the code for Kafka clients, both custom and confluent SDK clients. They are useful for making various operations on our Kafka cluster from the client side.
 
-- **<a href="https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaDocker" target="_blank">KafkaClients</a>** : This folder contains the docker-compose file for setting up our application in various configurations and approches.
+- **<a href="https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaDocker" target="_blank">KafkaDocker</a>** : This folder contains the docker-compose file for setting up our application in various configurations and approches.
 
-- **<a href="https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaThesisBuild" target="_blank">KafkaClients</a>** : This folder contains the final build of our Thesis streaming application, excluding the React frontend Live-map, which is located in the [LiveMapReact](https://github.com/nkolovos/LiveMapReact)  repo. Here you will find detailed inforamtion on the **[architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)** and the implementation of the application, in addtion with useful information on event-driven applications.
+- **<a href="https://github.com/nkolovos/Event-Driven-Streaming-Platform/tree/main/KafkaThesisBuild" target="_blank">KafkaThesisBuild</a>** : This folder contains the final build of our Thesis streaming application, excluding the React frontend Live-map, which is located in the [LiveMapReact](https://github.com/nkolovos/LiveMapReact)  repo. Here you will find detailed information on the **[architecture](https://nkolovos.github.io/Event-Driven-Streaming-Platform/KafkaThesisBuild/)** and the implementation of the application, in addition with useful information on event-driven applications.
 
 <div style="text-align: center;">
   <img src="KafkaThesisBuild/figures/scheme.drawio.png" alt="System Architecture" style="max-width: 50%; height: auto;"/>
